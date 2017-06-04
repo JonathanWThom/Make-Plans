@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  expose :user
+
   def show
-    @user = User.find(params[:id])
+    @activity = user.activities.new
   end
 
 end

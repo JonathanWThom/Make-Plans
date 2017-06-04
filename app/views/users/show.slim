@@ -1,3 +1,7 @@
-h3 = @user.first_name
+h3 = user.first_name
 
 h3 Invite a friend to an activity
+
+= simple_form_for [user, @activity] do |f|
+  = f.text_field :title
+  = f.submit
