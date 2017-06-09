@@ -1,0 +1,7 @@
+h3 Save an Activity for Later
+
+= simple_form_for [user, @activity] do |f|
+  p = f.text_field :title, required: true
+  p = f.text_area :description
+  p = f.input :image, as: :file
+  = f.submit

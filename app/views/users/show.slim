@@ -1,23 +1,7 @@
 h3 = user.first_name
 
+= render "events/user_event_form"
+= render "events/user_event_list"
 
-h3 Invite a Friend to an Activity!
-
-
-h3 Save an Activity for Later
-
-= simple_form_for [user, @activity] do |f|
-  p = f.text_field :title, required: true
-  p = f.text_area :description
-  p = f.input :image, as: :file
-  = f.submit
-
-- if current_user.activities.any?
-  ul
-  - current_user.activities.each do |activity|
-    h4 = activity.title
-    - if activity.description
-      p = activity.description
-    - if activity.image
-      img src="#{activity.image.url(:medium)}"
-    hr
+= render "activities/user_activity_form"
+= render "activities/user_activity_list"

@@ -1,0 +1,9 @@
+- if current_user.activities.any?
+  ul
+  - current_user.activities.each do |activity|
+    h4 = activity.title
+    - if activity.description
+      p = activity.description
+    - if activity.image
+      img src="#{activity.image.url(:medium)}"
+    hr
