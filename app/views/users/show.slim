@@ -3,13 +3,17 @@ h3 = user.first_name
 h3 Invite a friend to an activity
 
 = simple_form_for [user, @activity] do |f|
-  p = f.text_field :title
+  p = f.text_field :title, required: true
   p = f.text_area :description
+  p = f.input :image, as: :file
   = f.submit
 
 - if current_user.activities.any?
   ul
   - current_user.activities.each do |activity|
     h4 = activity.title
-    p = activity.description
+    - if activity.description
+      p = activity.description
+    - if activity.image
+      img src="#{activity.image.url(:medium)}"
     hr

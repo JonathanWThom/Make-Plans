@@ -19,6 +19,7 @@ gem 'decent_exposure', '3.0.0'
 gem 'devise'
 gem 'cancancan', '~> 1.10'
 gem 'simple_form'
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
