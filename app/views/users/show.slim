@@ -5,3 +5,8 @@ h3 Invite a friend to an activity
 = simple_form_for [user, @activity] do |f|
   = f.text_field :title
   = f.submit
+
+- if current_user.activities.any?
+  ul
+  - current_user.activities.each do |activity|
+    li = activity.title
