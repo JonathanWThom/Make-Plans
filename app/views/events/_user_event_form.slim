@@ -1,3 +1,5 @@
 h3 Invite a Friend to an Activity!
 
-p form will go here
+= form_for Event.new do |f|
+  = select_tag :activity, options_for_select(current_user.activities.map { |a| [a.title, a.id]})
+end

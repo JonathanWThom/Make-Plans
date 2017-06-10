@@ -4,4 +4,6 @@ Rails.application.routes.draw do
     resources :activities
   end
   root to: "home#index"
+
+  resources :events
 end
