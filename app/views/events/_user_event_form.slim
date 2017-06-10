@@ -1,5 +1,10 @@
 h3 Invite a Friend to an Activity!
 
-= form_for Event.new do |f|
+= simple_form_for Event.new do |f|
   = select_tag :activity, options_for_select(current_user.activities.map { |a| [a.title, a.id]})
+  = f.input :date
+  = f.input :location
+  = f.submit
 end
+
+h4 or  create a new activity
