@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   end
   root to: "home#index"
 
-  resources :events
+  resources :events, only: :create
 end

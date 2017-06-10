@@ -1,1 +1,7 @@
-p event list will go here
+- if current_user.events.any?
+  ul
+  - current_user.events.each do |event|
+    h5 = event.activities.first.title
+    p = event.activities.first.description
+    p = "Location: #{event.location}"
+    p = "Date: #{event.date}"
