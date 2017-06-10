@@ -1,4 +1,4 @@
 class Event < ActiveRecord::Base
-  has_many :activities
-  has_many :users, through: :activities
+  has_many :invitations
+  has_many :activities, through: :invitations
 end
