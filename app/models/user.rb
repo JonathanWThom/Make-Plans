@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :activities
   has_many :events
+  has_and_belongs_to_many :invitations
 end
