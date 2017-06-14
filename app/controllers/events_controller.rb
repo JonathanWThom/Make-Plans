@@ -3,7 +3,8 @@ class EventsController < ApplicationController
     event = Event.create(event_params)
     if event.valid?
       activity = Activity.find(activity_params[:activity])
-      Invitation.create(event_id: event.id, activity_id: activity.id)
+      invitation = Invitation.create(event_id: event.id, activity_id: activity.id)
+      invitation.users << current_user
     else
       flash[:notice] = "You done messed up"
     end
