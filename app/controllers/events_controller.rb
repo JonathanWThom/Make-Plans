@@ -5,6 +5,7 @@ class EventsController < ApplicationController
       activity = Activity.find(activity_params[:activity])
       invitation = Invitation.create(event_id: event.id, activity_id: activity.id)
       invitation.users << current_user
+      InvitationEmailMailer.invitation_email(current_user, invitee_email[:invitee_email]).deliver_later
     else
       flash[:notice] = "You done messed up"
     end
@@ -20,5 +21,9 @@ class EventsController < ApplicationController
 
   def activity_params
     params.permit(:activity)
+  end
+
+  def invitee_email
+    params.permit(:invitee_email)
   end
 end
