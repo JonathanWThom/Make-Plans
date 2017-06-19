@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   resources :events, only: :create
+  resources :invitations, param: :uuid, only: :show
 end
