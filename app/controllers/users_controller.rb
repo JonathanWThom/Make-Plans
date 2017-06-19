@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @activity = user.activities.new
+    @pending_invitations = PendingInvitation.where(user_email: user.email)
   end
 
 end

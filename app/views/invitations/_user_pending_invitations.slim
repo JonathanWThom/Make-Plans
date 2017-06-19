@@ -1,0 +1,10 @@
+- if @pending_invitations.any?
+  - @pending_invitations.each do |pending|
+    h3 = "#{pending.invitation.activity.user.first_name} wants to make plans with you!"
+    p = pending.invitation.event.location
+    p = pending.invitation.event.date
+    p = pending.invitation.activity.title
+    p = pending.invitation.activity.description
+    - if pending.invitation.activity.image
+      img src="#{pending.invitation.activity.image.url(:medium)}"
+    = button_to "RSVP", rsvp_invitation_path(pending.invitation), :method => "post"
