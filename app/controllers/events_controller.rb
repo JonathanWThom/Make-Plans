@@ -7,7 +7,7 @@ class EventsController < ApplicationController
       invitation.users << current_user
       InvitationEmailMailer.invitation_email(current_user, invitee_email[:invitee_email], invitation).deliver_later
     else
-      flash[:notice] = "You done messed up"
+      flash[:notice] = "Something went wrong, please resubmit"
     end
 
     redirect_to user_path(current_user)
