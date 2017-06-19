@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   resources :events, only: :create
-  resources :invitations, param: :uuid, only: :show
+  resources :invitations, param: :uuid, only: [:show] do
+    post "rsvp", on: :member
+  end
 end

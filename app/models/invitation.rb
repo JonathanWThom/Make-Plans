@@ -6,4 +6,5 @@ class Invitation < ActiveRecord::Base
   def to_param
     uuid
   end
+  
 end
