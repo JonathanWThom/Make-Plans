@@ -1,7 +1,25 @@
-- if current_user.events.any?
+- if current_user.future_events.any?
+  h3 Events you've created!
   ul
-  - current_user.events.each do |event|
+  - current_user.future_events.each do |event|
     h5 = event.activities.first.title
     p = event.activities.first.description
     p = "Location: #{event.location}"
     p = "Date: #{event.date}"
+    - event.invitations.each do |i|
+
+      - i.rsvps.each do |rsvp|
+        = "#{rsvp.first_name} is coming!"
+
+      - i.pending_invitations.each do |pending|
+        = "#{pending.user_email} is pending!"
+
+- if current_user.other_invitations.any?
+  h3 Events others have invited you to!
+  - current_user.other_invitations.each do |invitation|
+    h5 = invitation.event.activities.first.title
+    p = invitation.event.activities.first.description
+    p = "Location: #{invitation.event.location}"
+    p = "Date: #{invitation.event.date}"
+
+/// So and so can't make it! Their message. Send them a message.

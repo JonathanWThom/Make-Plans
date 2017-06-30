@@ -8,4 +8,7 @@ class Invitation < ActiveRecord::Base
     uuid
   end
 
+  def rsvps
+    users.where("email != ?", event.user.email)
+  end
 end
