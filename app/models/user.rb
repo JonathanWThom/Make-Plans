@@ -13,7 +13,9 @@ class User < ApplicationRecord
   end
 
   def other_invitations
-    invitations.select { |i| i.event.user != self}
+    invitations.select { |i| i.event.user != self }
   end
+
+  ## combine these two into one super list
 
 end

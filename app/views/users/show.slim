@@ -1,9 +1,17 @@
 h3 = user.first_name
 
-= render "invitations/user_pending_invitations"
+.row
+  .col-sm-6
+    .text-center
+      h3.d-inline-block Your Upcoming Events
+      = link_to fa_icon("plus-circle"), new_event_path, method: :get
 
-= render "events/user_event_form"
-= render "events/user_event_list"
+    = render "invitations/user_pending_invitations"
+    = render "events/user_event_list"
 
-= render "activities/user_activity_form"
-= render "activities/user_activity_list"
+  .col-sm-6
+    .text-center
+      h3.d-inline-block Your Saved Activities
+      = link_to fa_icon("plus-circle"), new_user_activity_path(user), method: :get
+
+    = render "activities/user_activity_list"

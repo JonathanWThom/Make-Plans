@@ -1,5 +1,9 @@
 class ActivitiesController < ApplicationController
   expose :user
+  def new
+    @activity = user.activities.new
+  end
+
   def create
     user.activities.create(activity_params)
     redirect_to user_path(user)

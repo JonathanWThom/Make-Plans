@@ -1,9 +1,15 @@
 - if current_user.activities.any?
-  ul
   - current_user.activities.each do |activity|
-    h4 = activity.title
-    - if activity.description
-      p = activity.description
-    - if activity.image
-      img src="#{activity.image.url(:medium)}"
-    hr
+    .card.activity-card
+      .card-block
+        h4.card-title = activity.title
+        .text-center = fa_icon("caret-up")
+        .text-center.hidden = fa_icon("caret-down")
+      img.card-img-top.hidden src=activity.image.url(:medium)
+      .card-block.hidden
+        p.card-text = activity.description
+
+javascript:
+  $(document).ready(function() {
+    CARDS.toggleCardInfo.init();
+  });

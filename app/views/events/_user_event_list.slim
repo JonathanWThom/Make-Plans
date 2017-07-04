@@ -1,25 +1,42 @@
 - if current_user.future_events.any?
-  h3 Events you've created!
-  ul
   - current_user.future_events.each do |event|
-    h5 = event.activities.first.title
-    p = event.activities.first.description
-    p = "Location: #{event.location}"
-    p = "Date: #{event.date}"
-    - event.invitations.each do |i|
+    .card.activity-card
+      .card-block
+        h4.card-title = "#{event.activities.first.title}: #{event.date.strftime("%B %e, %Y")}"
+        .text-center = fa_icon("caret-up")
+        .text-center.hidden = fa_icon("caret-down")
+      img.card-img-top.hidden src=event.activities.first.image.url(:medium)
+      .card-block.hidden
+          p.card-text = event.activities.first.description
+          p.card-text = "Location: #{event.location}"
+          p.card-text = "Date: #{event.date}"
 
-      - i.rsvps.each do |rsvp|
-        = "#{rsvp.first_name} is coming!"
+          - if event.invitations.any? { |i| i.rsvps.any? }
+            h5 You're going with:
+            - event.invitations.each do |i|
+              - i.rsvps.each do |rsvp|
+                p.card-text = "#{rsvp.first_name} #{rsvp.last_name}"
 
-      - i.pending_invitations.each do |pending|
-        = "#{pending.user_email} is pending!"
+          - if event.invitations.any? { |i| i.pending_invitations.any? }
+            h5 You've invited the following people:
+            - event.invitations.each do |i|
+              - i.pending_invitations.each do |pending|
+                = "#{pending.user_email} is pending!"
 
 - if current_user.other_invitations.any?
-  h3 Events others have invited you to!
   - current_user.other_invitations.each do |invitation|
-    h5 = invitation.event.activities.first.title
-    p = invitation.event.activities.first.description
-    p = "Location: #{invitation.event.location}"
-    p = "Date: #{invitation.event.date}"
+    .card.activity-card
+      img.card-img-top src=invitation.event.activities.first.image.url(:medium)
+      .card-block
+        h4.card-title = invitation.event.activities.first.title
+        p.card-text = "You were invited by: #{invitation.event.activities.first.user.first_name}"
+        p.card-text = invitation.event.activities.first.description
+        p.card-text = "Location: #{invitation.event.location}"
+        p.card-text = "Date: #{invitation.event.date}"
 
 /// So and so can't make it! Their message. Send them a message.
+
+javascript:
+  $(document).ready(function() {
+    CARDS.toggleCardInfo.init();
+  });
