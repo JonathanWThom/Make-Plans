@@ -16,6 +16,10 @@ class User < ApplicationRecord
     invitations.select { |i| i.event.user != self }
   end
 
+  def full_name
+    first_name + " " + last_name
+  end
+
   ## combine these two into one super list
 
 end

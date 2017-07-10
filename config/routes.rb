@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :events, only: [:new, :create]
   resources :invitations, param: :uuid, only: [:show] do
     post "rsvp", on: :member
+    patch "decline", on: :member
   end
 end

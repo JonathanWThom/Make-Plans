@@ -21,7 +21,16 @@
             h5 You've invited the following people:
             - event.invitations.each do |i|
               - i.pending_invitations.each do |pending|
-                = "#{pending.user_email} is pending!"
+                p.card-text = "#{pending.user_email} is pending!"
+
+          - event.invitations.where(declined: true).each do |i|
+            p.card-text = "#{identify_user(i.user_email)} can't make it."
+            - if i.message
+              = "\"#{i.message}\""
+
+            // show their email or name if present
+
+            /// refactor these to use scope
 
 - if current_user.other_invitations.any?
   - current_user.other_invitations.each do |invitation|

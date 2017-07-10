@@ -8,3 +8,26 @@
     - if pending.invitation.activity.image
       img src="#{pending.invitation.activity.image.url(:medium)}"
     = button_to "RSVP", rsvp_invitation_path(pending.invitation), :method => "post"
+
+    button#decline-button I Can't Make It
+
+    #decline-invitation-message.hidden
+      = simple_form_for pending.invitation, url: decline_invitation_path(pending.invitation) do |f|
+        = f.input :message, label: "Optional message"
+        = f.submit "Complete"
+
+      button#cancel-button Cancel
+
+javascript:
+  $(document).ready(function(){
+    $("body").on("click", "#decline-button", function() {
+      $("#decline-invitation-message").show();
+      $(this).hide();
+    })
+
+    $("body").on("click", "#cancel-button", function() {
+      $("#decline-invitation-message").hide();
+    })
+  });
+
+  ///implement data-target here to select correct one to open/close

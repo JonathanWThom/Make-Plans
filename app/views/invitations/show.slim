@@ -4,6 +4,7 @@ h1 hey, you've reached the show page.
   h3 invitation info will go here
   p click the button to respond - it will be a form to add them to the invitation
   = button_to "RSVP", rsvp_invitation_path(@invitation), :method => "post"
+  = button_to "I Can't Make It", decline_invitation_path(@invitation), :method => "post"
 - else
   p = link_to "Log In", new_user_session_path
   p = link_to "Sign Up to Make Plans", new_user_registration_path
