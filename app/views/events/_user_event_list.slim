@@ -28,10 +28,6 @@
             - if i.message
               = "\"#{i.message}\""
 
-            // show their email or name if present
-
-            /// refactor these to use scope
-
 - if current_user.other_invitations.any?
   - current_user.other_invitations.each do |invitation|
     .card.activity-card
