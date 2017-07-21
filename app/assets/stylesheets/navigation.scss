@@ -1,7 +1,32 @@
+$teal: #02d7e2;
+$purple: #7D02E2;
+$red: #E20D02;
+$green: #67E202;
+
+.custom-nav {
+  margin-top: 20px;
+  text-align: center;
+}
+
 .nav-title {
-  background-color: yellow;
-  color: pink;
-  border-radius: 40px;
+  background-color: $teal;
+  border-radius: 30px;
+  color: $purple;
   display: inline-block;
-  padding: 5px 10px;
+  padding: 10px 15px;
+  h1 {
+    margin-bottom: 0;
+  }
+}
+
+.nav-links {
+  display: inline-block;
+  h1, h2, h3, h4, h5, h6, p {
+    display: inline-block;
+    margin: 0px 50px;
+    text-decoration: underline;
+  }
+  h4:hover {
+    color: $teal;
+  }
 }
