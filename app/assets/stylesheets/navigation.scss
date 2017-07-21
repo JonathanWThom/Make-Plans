@@ -33,4 +33,9 @@
     color: $teal;
     text-decoration: none;
   }
+  a.active {
+    color: $teal;
+    cursor: default;
+    pointer-events: none;
+  }
 }
