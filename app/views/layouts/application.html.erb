@@ -10,7 +10,9 @@
 
   <body>
     <div class="container">
-      <%= render "navigation/navigation" %>
+      <% unless current_page?(root_path) || !current_user %>
+        <%= render "navigation/navigation" %>
+      <% end %>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
       <%= yield %>

@@ -1,9 +1,12 @@
 .custom-nav
   .nav-links
-    h4 Thing 1
-    h4 Thing 2
+    h4
+      = link_to "New Activity", new_user_activity_path(current_user)
+    h4
+      = link_to "New Event", new_event_path
   .nav-title
-    h1 Make Plans
+    h1
+      = link_to "Make Plans", user_path(current_user)
   .nav-links
-    h4 Thing 3
-    h4 Thing 4
+    h4 Activities Near You
+    h4 Settings
