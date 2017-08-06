@@ -1,44 +1,6 @@
 - if @pending_invitations.any?
   - @pending_invitations.each do |pending|
-    .card.activity-card
-      .card-block
-        h4.card-title.text-center = "#{pending.invitation.activity.user.first_name} wants to make plans with you!"
-        .text-center = fa_icon("caret-up")
-        .text-center.hidden = fa_icon("caret-down")
-      .hidden.card-block.margin-top-0
-        .row
-          .col-sm-6.text-center
-            img.hidden src=pending.invitation.activity.image.url(:medium)
-          .col-sm-6
-            p.card-text = pending.invitation.activity.title
-            p.card-text = pending.invitation.event.date.strftime("%B %e, %Y")
-            p.card-text = pending.invitation.event.location
-            p.card-text = pending.invitation.activity.description
-            // activity/event presenter
-
-        .row.margin-top-20
-          .col-sm-12.text-center
-            .d-inline-block.margin-right-10
-              #rsvp-button
-                = button_to "RSVP", rsvp_invitation_path(pending.invitation), :method => "post"
-
-            .d-inline-block.margin-left-10
-              button#decline-button I Can't Make It
-
-            .decline-invitation-message.text-center
-              .form-group
-                = simple_form_for pending.invitation, url: decline_invitation_path(pending.invitation) do |f|
-                  = f.input :message,
-                    placeholder: "Optional message",
-                    label: false,
-                    input_html: { class: "form-control" }
-
-              .d-inline-block.text-center
-                button#cancel-button.margin-right-10 Cancel
-
-              .d-inline-block.text-center
-                button#complete-button.margin-left-10[data-form-target="edit_invitiation_#{pending.invitation.id}"] Complete
-
+    = render "cards/pending_invitation_card", pending: pending
 
 javascript:
   $(document).ready(function(){

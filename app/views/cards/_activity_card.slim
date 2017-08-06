@@ -1,0 +1,8 @@
+.card.activity-card
+  .card-block
+    h4.card-title = activity.title
+    .text-center = fa_icon("caret-up")
+    .text-center.hidden = fa_icon("caret-down")
+  img.card-img-top.hidden src=activity.image.url(:medium)
+  .card-block.hidden
+    p.card-text = activity.description

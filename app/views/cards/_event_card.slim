@@ -1,0 +1,27 @@
+.card.activity-card
+  .card-block
+    h4.card-title = "#{event.activities.first.title}: #{event.date.strftime("%B %e, %Y")}"
+    .text-center = fa_icon("caret-up")
+    .text-center.hidden = fa_icon("caret-down")
+  img.card-img-top.hidden src=event.activities.first.image.url(:medium)
+  .card-block.hidden
+      p.card-text = event.activities.first.description
+      p.card-text = "Location: #{event.location}"
+      p.card-text = "Date: #{event.date}"
+
+      - if event.invitations.any? { |i| i.rsvps.any? }
+        h5 You're going with:
+        - event.invitations.each do |i|
+          - i.rsvps.each do |rsvp|
+            p.card-text = "#{rsvp.first_name} #{rsvp.last_name}"
+
+      - if event.invitations.any? { |i| i.pending_invitations.any? }
+        h5 You've invited the following people:
+        - event.invitations.each do |i|
+          - i.pending_invitations.each do |pending|
+            p.card-text = "#{pending.user_email} is pending!"
+
+      - event.invitations.where(declined: true).each do |i|
+        p.card-text = "#{identify_user(i.user_email)} can't make it."
+        - if i.message
+          = "\"#{i.message}\""
