@@ -1,7 +1,13 @@
-h3 Save an Activity for Later
-
-= simple_form_for [user, @activity] do |f|
-  = f.input :title, required: true
-  = f.input :description
-  = f.input :image, as: :file
-  = f.submit
+.card.activity-card.form-card
+  .card-block
+    .card-title.text-center
+      h4 Save an Activity for Later
+  .card-block.text-center
+    = simple_form_for [user, @activity] do |f|
+      = f.label "Title"
+      = f.input :title, required: true, label: false
+      = f.label "Description"
+      = f.input :description, label: false
+      = f.label "Image"
+      = f.input :image, as: :file, label: false
+      = f.submit
