@@ -2,4 +2,9 @@
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
+  border: 2px gray solid;
+}
+
+.alert-card {
+  border: 2px $purple solid;
 }
