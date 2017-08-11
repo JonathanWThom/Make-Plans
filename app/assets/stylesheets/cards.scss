@@ -1,0 +1,19 @@
+.generic-card {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px gray solid;
+}
+
+.activity-card {
+  @extend .generic-card;
+}
+
+.alert-card {
+  border: 2px $purple solid;
+}
+
+.devise-card {
+  @extend .generic-card;
+  width: 40vw;
+}
