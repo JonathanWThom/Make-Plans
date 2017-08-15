@@ -1,13 +1,47 @@
-.card.activity-card.form-card
+.card.devise-card
   .card-block
     .card-title.text-center
       h4 Save an Activity for Later
-  .card-block.text-center
     = simple_form_for [user, @activity] do |f|
-      = f.label "Title"
-      = f.input :title, required: true, label: false
-      = f.label "Description"
-      = f.input :description, label: false
-      = f.label "Image"
-      = f.input :image, as: :file, label: false
-      = f.submit
+      .form-group
+        = f.label "Title"
+        = f.input :title,
+          label: false,
+          input_html: {class: "form-control", required: true}
+      .form-group
+        = f.label "Description"
+        = f.input :description,
+          label: false,
+          input_html: {class: "form-control", required: true}
+      .form-group.file-upload
+        = f.label "Image"
+        = f.input :image,
+          as: :file,
+          label: false,
+          input_html: {required: true, class: "hidden"}
+        .upload-button Upload
+        img id="blah" src="#" alt="your image"
+
+      .text-center
+        = f.submit
+
+javascript:
+  $(document).ready(function(){
+    $("body").on("click", ".upload-button", function(){
+      $("#activity_image").click();
+    })
+
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result);
+        }
+      reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    $("#activity_image").change(function(){
+      readURL(this);
+    });
+  })
