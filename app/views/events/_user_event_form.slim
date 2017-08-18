@@ -1,10 +1,20 @@
-h3 Invite a Friend to an Activity!
+.card.devise-card
+  .card-block
+    .card-title.text-center
+      h4 Invite a Friend to an Activity!
+    = simple_form_for Event.new do |f|
+      .form-group
+        = f.label "What"
+        = select_tag :activity,
+          options_for_select(current_user.activities.map { |a| [a.title, a.id]}),
+          class: "form-control"
+      .form-group
+        = f.label "When"
+        = f.input :happening_at, label: false
+      .form-group
+        = f.label "Who"
+        = text_field_tag :invitee_email
+        = f.hidden_field :user_id, value: current_user.id
 
-= simple_form_for Event.new do |f|
-  = select_tag :activity, options_for_select(current_user.activities.map { |a| [a.title, a.id]})
-  = f.input :date
-  = f.input :location
-  = f.label "Invite a friend"
-  = text_field_tag :invitee_email
-  = f.hidden_field :user_id, value: current_user.id
-  = f.submit
+      .text-center
+        = f.submit

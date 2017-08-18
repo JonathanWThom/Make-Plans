@@ -5,7 +5,7 @@ h3.text-center = "#{@invitation.event.user.full_name} wants to make plans with y
     h4.card-title = @invitation.event.activities.first.title
     p.card-text = @invitation.event.activities.first.description
     p.card-text = "Location: #{@invitation.event.location}"
-    p.card-text = "Date: #{@invitation.event.date}"
+    p.card-text = "Date: #{@invitation.event.happening_at}"
 
 - if current_user
   .text-center

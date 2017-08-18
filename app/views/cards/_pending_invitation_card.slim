@@ -9,7 +9,7 @@
         img.hidden src=pending.invitation.activity.image.url(:medium)
       .col-sm-6
         p.card-text = pending.invitation.activity.title
-        p.card-text = pending.invitation.event.date.strftime("%B %e, %Y")
+        p.card-text = pending.invitation.event.happening_at.strftime("%B %e, %Y")
         p.card-text = pending.invitation.event.location
         p.card-text = pending.invitation.activity.description
         // activity/event presenter

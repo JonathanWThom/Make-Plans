@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_and_belongs_to_many :invitations
 
   def future_events
-    events.where("date > ?", Date.today).order("date ASC")
+    events.where("happening_at > ?", Date.today).order("datetime ASC")
   end
 
   def other_invitations
