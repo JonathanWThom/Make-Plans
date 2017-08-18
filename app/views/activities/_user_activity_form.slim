@@ -20,7 +20,8 @@
           label: false,
           input_html: {required: true, class: "hidden"}
         .upload-button Upload
-        img id="blah" src="#" alt="your image"
+
+        img.activity-image#activity-image src="#"
 
       .text-center
         = f.submit
@@ -35,7 +36,7 @@ javascript:
       if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-            $('#blah').attr('src', e.target.result);
+            $("#activity-image").attr("src", e.target.result);
         }
       reader.readAsDataURL(input.files[0]);
       }
