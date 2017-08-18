@@ -12,16 +12,18 @@
  *
  *= require_self
  */
- @import "bootstrap";
- @import "helpers";
- @import "colors";
- @import "activities";
- @import "font-awesome";
- @import "icons";
- @import "navigation";
- @import "events";
- @import "forms";
- @import "cards";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'bootstrap-datetimepicker';
+@import "helpers";
+@import "colors";
+@import "activities";
+@import "font-awesome";
+@import "icons";
+@import "navigation";
+@import "events";
+@import "forms";
+@import "cards";
 
 .hidden {
   display: none;

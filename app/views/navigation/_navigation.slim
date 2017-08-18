@@ -1,12 +1,12 @@
 .custom-nav.margin-left-40
   .nav-links
-    h4
+    h3
       = link_to "New Activity", new_user_activity_path(current_user), id: "new-activity"
-    h4
+    h3
       = link_to "New Event", new_event_path, id: "new-event"
   .nav-title
     h1
       = link_to "Make Plans", user_path(current_user)
   .nav-links
-    h4#activities-near-you Activities Near You
-    h4#settings Settings
+    h3#activities-near-you Activities Near You
+    h3#settings Settings

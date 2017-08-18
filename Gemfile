@@ -20,9 +20,10 @@ gem 'devise'
 gem 'cancancan', '~> 1.10'
 gem 'simple_form'
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
-gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 gem "font-awesome-rails"
-
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
+gem 'bootstrap-sass', '3.2.0.2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
