@@ -2,3 +2,35 @@ $teal: #02d7e2;
 $purple: #7D02E2;
 $red: #E20D02;
 $green: #67E202;
+
+.teal {
+  color: $teal;
+}
+
+.purple {
+  color: $purple;
+}
+
+.red {
+  color: $red;
+}
+
+.green {
+  color: $green;
+}
+
+.teal-background {
+  background-color: $teal;
+}
+
+.purple-background {
+  background-color: $purple;
+}
+
+.red-background {
+  background-color: $red;
+}
+
+.green-background {
+  background-color: $green;
+}
