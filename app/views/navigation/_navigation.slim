@@ -9,4 +9,5 @@
       = link_to "Make Plans", user_path(current_user)
   .nav-links
     h3#activities-near-you Activities Near You
-    h3#settings Settings
+    h3
+      = link_to "Log Out", destroy_user_session_path, method: :delete
