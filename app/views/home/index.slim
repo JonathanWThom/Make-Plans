@@ -1,18 +1,19 @@
-.text-center
+.text-center.margin-top-50
   .home-title
     h1
       | Let's
       span.purple  Make Plans
 
-  h3 Turn someday into today.
+  .home-intro
+    h3 Turn someday into today.
 
-  h3 How it works:
-  h4 Find, create, and save activities for later
-  h4 Invite friends
-  h4 Connect!
+    p.display-inline-block.margin-right-20
+      = link_to "Sign up to Make Plans", new_user_registration_path
 
-  p = link_to "Sign up to Make Plans", new_user_registration_path
+    p.display-inline-block
+      = link_to "Log in", new_user_session_path
 
-  p = link_to "Log in", new_user_session_path
 
-  p = link_to "Check out activies in your area", "#"
+    /h4 Find, create, and save activities for later.
+    /h4 Invite a friend to an event.
+    /h4 Connect!
