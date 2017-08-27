@@ -11,5 +11,9 @@
 }
 
 .sessions-new {
-  @include background("friends5.jpeg")
+  @include background("friends5.jpeg");
+}
+
+.registrations-new {
+  @include background("friends6.jpeg");
 }
