@@ -2,6 +2,11 @@ $teal: #02d7e2;
 $purple: #7D02E2;
 $red: #E20D02;
 $green: #67E202;
+$white-background: rgba(255, 255, 255, 0.8);
+
+body {
+  color: black;
+}
 
 .teal {
   color: $teal;
