@@ -1,8 +1,9 @@
 .generic-card {
+  border: 2px gray solid;
+  border-radius: 20px;
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
-  border: 2px gray solid;
   img {
     width: 100%;
   }
@@ -28,6 +29,8 @@
 
 .card-column {
   background: $white-background;
+  border: 2px gray solid;
   border-radius: 20px;
   padding-bottom: 20px;
+  width: 45%;
 }

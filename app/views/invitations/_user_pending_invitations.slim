@@ -1,6 +1,8 @@
 - if @pending_invitations.any?
-  - @pending_invitations.each do |pending|
-    = render "cards/pending_invitation_card", pending: pending
+  .row.margin-bottom-20
+    .col-sm-12
+    - @pending_invitations.each do |pending|
+      = render "cards/pending_invitation_card", pending: pending
 
 javascript:
   $(document).ready(function(){
