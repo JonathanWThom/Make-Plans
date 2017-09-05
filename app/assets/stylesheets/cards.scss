@@ -14,13 +14,15 @@
 }
 
 .alert-card {
+  background: rgba(255, 255, 255, 0.8);
   border: 2px $purple solid;
+  margin-top: 0px;
 }
 
 .devise-card {
   @extend .generic-card;
   width: 40vw;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .card-block {

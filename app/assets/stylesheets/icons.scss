@@ -32,7 +32,7 @@ button, .button, input[type="submit"] {
 
   &:hover {
     background: darken($teal, 1.5%);
-    border: 1px solid rgba(#000, .05);
+    border: 2px solid rgba(#000, .05);
     box-shadow: 1px 1px 2px rgba(#fff, .2);
     color: lighten($purple, 18%);
     text-decoration: none;

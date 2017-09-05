@@ -16,11 +16,11 @@
 
     .row.margin-top-20
       .col-sm-12.text-center
-        .d-inline-block.margin-right-10
+        .display-inline-block.margin-right-10
           #rsvp-button
             = button_to "RSVP", rsvp_invitation_path(pending.invitation), :method => "post"
 
-        .d-inline-block.margin-left-10
+        .display-inline-block.margin-left-10
           button#decline-button I Can't Make It
 
         .decline-invitation-message.text-center
@@ -31,8 +31,8 @@
                 label: false,
                 input_html: { class: "form-control" }
 
-          .d-inline-block.text-center
+          .display-inline-block.text-center
             button#cancel-button.margin-right-10 Cancel
 
-          .d-inline-block.text-center
+          .display-inline-block.text-center
             button#complete-button.margin-left-10[data-form-target="edit_invitiation_#{pending.invitation.id}"] Complete
