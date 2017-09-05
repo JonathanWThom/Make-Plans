@@ -3,14 +3,14 @@
 .row
   .col-sm-5.card-column
     .text-center
-      h3.d-inline-block Your Saved Activities
+      h3.display-inline-block Your Saved Activities
       = link_to fa_icon("plus-circle"), new_user_activity_path(user), method: :get
 
     = render "activities/user_activity_list"
 
   .col-sm-5.card-column.float-right
     .text-center
-      h3.d-inline-block Your Upcoming Events
+      h3.display-inline-block Your Upcoming Events
       = link_to fa_icon("plus-circle"), new_event_path, method: :get
     = render "events/user_event_list"
 

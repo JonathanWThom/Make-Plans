@@ -8,6 +8,8 @@
         = select_tag :activity,
           options_for_select(current_user.activities.map { |a| [a.title, a.id]}),
           class: "form-control"
+
+        = link_to "Create a new activity", new_user_activity_path(current_user)
       .form-group
         = f.label "When"
 
@@ -20,7 +22,7 @@
         = text_field_tag :invitee_email,
           nil,
           class: "form-control",
-          placeholder: "Invite a friend by email"
+          placeholder: "Enter a friend's email address"
         = f.hidden_field :user_id, value: current_user.id
 
       .text-center

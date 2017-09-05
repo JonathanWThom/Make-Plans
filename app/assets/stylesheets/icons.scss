@@ -25,8 +25,7 @@ button, .button, input[type="submit"] {
     -moz-outline-style: none;
   }
 
-  border: 1px solid darken($teal, 4%);
-  box-shadow: 0px 2px 0 darken($teal, 5%);
+  border: 2px solid gray;
   font-weight: 900;
   letter-spacing: 1px;
   transition: all 150ms linear;

@@ -21,3 +21,11 @@
 .users-show {
   @include background("friends.jpeg");
 }
+
+.events-new {
+  @include background("friends1.jpeg");
+}
+
+.activities-new {
+  @include background("friends3.jpg");
+}

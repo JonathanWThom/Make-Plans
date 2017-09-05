@@ -2,11 +2,11 @@
   .card-block
     h4.card-title.text-center = "#{pending.invitation.activity.user.first_name} wants to make plans with you!"
     .text-center = fa_icon("caret-up")
-    .text-center.hidden = fa_icon("caret-down")
-  .hidden.card-block.margin-top-0
+    .text-center.display-none = fa_icon("caret-down")
+  .display-none.card-block.margin-top-0
     .row
       .col-sm-6.text-center
-        img.hidden src=pending.invitation.activity.image.url(:medium)
+        img.display-none src=pending.invitation.activity.image.url(:medium)
       .col-sm-6
         p.card-text = pending.invitation.activity.title
         p.card-text = pending.invitation.event.happening_at.strftime("%B %e, %Y")
