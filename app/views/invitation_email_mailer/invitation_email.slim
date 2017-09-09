@@ -1,0 +1,6 @@
+h1
+  | You've been invited by
+  = " #{@user.full_name}"
+  |  to Make Plans
+
+= link_to "Click Here to Reply", @invitation_link
