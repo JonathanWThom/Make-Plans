@@ -13,6 +13,12 @@
         = f.input :description,
           label: false,
           input_html: {class: "form-control", required: true}
+      .form-group
+        = f.label "Location"
+        = f.input :location,
+          label: false,
+          input_html: {class: "form-control", required: true}
+          /// give attribution to google
       .form-group.file-upload
         = f.label "Image"
         = f.input :image,
@@ -25,6 +31,8 @@
 
       .text-center
         = f.submit
+
+script[src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXR1lnDGDuUHAlCyunexhSBy3Ub1YH0hc&libraries=places&callback=LOCATION.googlePlaces.initAutocomplete" async defer]
 
 javascript:
   $(document).ready(function(){

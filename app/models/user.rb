@@ -19,7 +19,8 @@ class User < ApplicationRecord
   def full_name
     first_name + " " + last_name
   end
-
   ## combine these two into one super list
 
+
+  # TODO: Change to uuid
 end
