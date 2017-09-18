@@ -20,14 +20,13 @@ $.extend(LOCATION, {
   },
 
   googlePlaces: {
-    initAutocomplete: function() {
+    initAutocomplete: function(bounds) {
+      bounds = bounds || null;
+      console.log(bounds);
       var input = document.getElementById('activity_location'),
-        bellingham = new google.maps.LatLng(48.7519, 122.4787),
-        other = new google.maps.LatLng(48.7419, 122.4787),
-        bounds = new google.maps.LatLngBounds(bellingham, other),
         searchBox = new google.maps.places.SearchBox(input, {
-          bounds: bounds });
-      /// set bounds to user location
+        bounds: bounds });
+
       searchBox.addListener('places_changed', function() {
         var places = searchBox.getPlaces();
 
@@ -35,6 +34,28 @@ $.extend(LOCATION, {
           return;
         }
       });
+    }
+  },
+
+  geolocate: {
+    init: function(searchBox) {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var geolocation = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          var circle = new google.maps.Circle({
+            center: geolocation,
+            radius: position.coords.accuracy
+          });
+
+          bounds = circle.getBounds();
+          LOCATION.googlePlaces.initAutocomplete(bounds);
+        });
+      } else {
+        LOCATION.googlePlaces.initAutocomplete(bounds);
+      }
     }
   }
 });
