@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_and_belongs_to_many :invitations
 
   def future_events
-    events.where("happening_at > ?", Date.today).order("datetime ASC")
+    events.where("happening_at > ?", Date.today).order("happening_at ASC")
   end
 
   def other_invitations
@@ -17,7 +17,7 @@ class User < ApplicationRecord
   end
 
   def full_name
-    first_name + " " + last_name
+    "#{first_name} #{last_name}"
   end
   ## combine these two into one super list
 

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :activities, only: [:new, :create]
   end
 
+  resources :activities, only: [:index]
+
   root to: "home#index"
 
   resources :events, only: [:new, :create]

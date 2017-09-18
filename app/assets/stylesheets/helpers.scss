@@ -21,3 +21,8 @@ $directions: left right top bottom;
 .display-inline-block {
   display: inline-block;
 }
+
+.centered-column {
+  float: none;
+  margin: 0 auto;
+}

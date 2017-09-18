@@ -11,6 +11,10 @@
 
 .activity-card, .home-card {
   @extend .generic-card;
+
+  img {
+    padding: 0px 20px;
+  }
 }
 
 .alert-card {

@@ -14,6 +14,10 @@ $.extend(LOCATION, {
 
         if (places.length == 0) {
           return;
+        } else {
+          document.getElementById("activity_latitude").value = places[0].geometry.location.lat();
+          document.getElementById("activity_longitude").value = places[0].geometry.location.lng();
+          // TODO: Reset values to zero if entering something not found after entering something found
         }
       });
     }

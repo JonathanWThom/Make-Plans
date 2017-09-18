@@ -2,7 +2,7 @@
   .card-block
     .card-title.text-center
       h4 Save an Activity for Later
-    = simple_form_for [user, @activity] do |f|
+    = simple_form_for [user, @activity], remote: true do |f|
       .form-group
         = f.label "Title"
         = f.input :title,
@@ -17,8 +17,12 @@
         = f.label "Location"
         = f.input :location,
           label: false,
-          input_html: {class: "form-control", required: true}
-          /// give attribution to google
+          input_html: {class: "form-control", required: true},
+          placeholder: false
+
+        .google-logo.margin-top-5.float-right
+          = image_tag "powered_by_google_on_white_hdpi.png"
+
       .form-group
         .margin-left-20.tooltip-pointer
           = f.input :public,
@@ -35,10 +39,13 @@
           as: :file,
           label: false,
           input_html: {required: true}
-          
+
         .upload-button Upload
 
         img.activity-image#activity-image src="#"
+
+      = f.hidden_field :latitude
+      = f.hidden_field :longitude
 
       .text-center
         = f.submit
