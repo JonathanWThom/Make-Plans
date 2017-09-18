@@ -19,6 +19,16 @@
           label: false,
           input_html: {class: "form-control", required: true}
           /// give attribution to google
+      .form-group
+        .margin-left-20.tooltip-pointer
+          = f.input :public,
+            label: "Make public?",
+            inline_label: true
+
+          .tooltiptext
+            | This will allow other users to see this activity, but
+            |  not who you're going with, or when.
+
       .form-group.file-upload
         = f.label "Image"
         = f.input :image,
