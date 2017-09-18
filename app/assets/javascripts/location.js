@@ -1,28 +1,10 @@
 var LOCATION = {};
 
 $.extend(LOCATION, {
-  getLocation: {
-    user_id: null,
-
-    init: function(user_id) {
-      this.user_id = user_id;
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(this.setPosition);
-      }
-    },
-
-    setPosition: function(position) {
-      var user_id = LOCATION.getLocation.user_id;
-      var latitude = position.coords.latitude,
-        longitude = position.coords.longitude;
-      $.post(`/users/${user_id}/set_user_location`, { location: { latitude: latitude, longitude: longitude } });
-    }
-  },
-
   googlePlaces: {
     initAutocomplete: function(bounds) {
       bounds = bounds || null;
-      console.log(bounds);
+
       var input = document.getElementById('activity_location'),
         searchBox = new google.maps.places.SearchBox(input, {
         bounds: bounds });
