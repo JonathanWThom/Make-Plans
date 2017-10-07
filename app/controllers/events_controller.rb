@@ -3,7 +3,12 @@ class EventsController < ApplicationController
   end
 
   def create
-    event = Event.create(event_params)
+    ## TODO: Fix this. Field is text, but needs to be save as datetime.
+    event = Event.create(
+        happening_at: DateTime.strptime(event_params[:happening_at], "%Q"),
+        location: event_params[:location],
+        user_id: event_params[:user_id]
+      )
     if event.valid?
       activity = Activity.find(activity_params[:activity])
       invitation = Invitation.create(event_id: event.id, activity_id: activity.id, user_email: invitee_email[:invitee_email])
