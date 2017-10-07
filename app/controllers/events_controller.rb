@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   def create
     ## TODO: Fix this. Field is text, but needs to be save as datetime.
     event = Event.create(
-        happening_at: DateTime.strptime(event_params[:happening_at], "%Q"),
+        happening_at: DateTime.strptime(event_params[:happening_at], '%m/%d/%Y %I:%M %p'),
         location: event_params[:location],
         user_id: event_params[:user_id]
       )
