@@ -1,8 +1,15 @@
 .card.activity-card
   .card-block
-    h4.card-title = activity.title
+    h4.card-title
+      = activity.title
+      - if activity.happening_at
+        span = ": #{formatted_date(activity.happening_at)}"
     .text-center = fa_icon("caret-up")
     .text-center.display-none = fa_icon("caret-down")
   img.card-img-top.display-none src=activity.image.url(:medium)
   .card-block.display-none
     p.card-text = activity.description
+    = link_to "X",
+      user_activity_path(current_user, activity),
+      data: {confirm: "Are you sure you want to delete this activity? All associated events and invitations will be deleted as well.", method: :delete},
+      class: "delete-x pull-right"

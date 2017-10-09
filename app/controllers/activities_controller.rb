@@ -30,6 +30,21 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def show
+    activity = Activity.find(params[:id])
+    happening_at_string = activity.happening_at_string
+
+    respond_to do |format|
+      format.json { render json: {happening_at: happening_at_string } }
+    end
+  end
+
+  def destroy
+    activity = Activity.find(params[:id])
+    activity.destroy
+    redirect_to user_path(current_user)
+  end
+
   private
 
   def activity_params
@@ -40,7 +55,8 @@ class ActivitiesController < ApplicationController
       :location,
       :public,
       :latitude,
-      :longitude
+      :longitude,
+      :happening_at_string
     )
   end
 end

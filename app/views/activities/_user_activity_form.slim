@@ -24,6 +24,16 @@
           = image_tag "powered_by_google_on_white_hdpi.png"
 
       .form-group
+        = f.label "When?"
+
+        .input-group.date#datetimepicker2
+          = f.text_field :happening_at_string,
+            class: "form-control",
+            placeholder: "Optional - Add only if this activity has a set date or time"
+          span.input-group-addon
+            span.glyphicon.glyphicon-calendar
+
+      .form-group
         .margin-left-20.tooltip-pointer
           = f.input :public,
             label: "Make public?",
@@ -54,6 +64,10 @@ script[src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXR1lnDGDuUHAlCyun
 
 javascript:
   $(document).ready(function(){
+    $(function () {
+        $('#datetimepicker2').datetimepicker();
+    });
+
     $("body").on("click", ".upload-button", function(){
       $("#activity_image").click();
     })

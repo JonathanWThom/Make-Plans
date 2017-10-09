@@ -1,8 +1,9 @@
 class Invitation < ActiveRecord::Base
   belongs_to :activity
   belongs_to :event
-  has_many :pending_invitations
+  has_many :pending_invitations, dependent: :destroy
   has_and_belongs_to_many :users
+  before_destroy :destroy_event
 
   def to_param
     uuid
@@ -10,5 +11,9 @@ class Invitation < ActiveRecord::Base
 
   def rsvps
     users.where("email != ?", event.user.email)
+  end
+
+  def destroy_event
+    self.event.destroy
   end
 end

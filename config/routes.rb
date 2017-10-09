@@ -3,10 +3,10 @@ Rails.application.routes.draw do
 
   resources :users, only: :show do
     post "set_user_location", on: :member
-    resources :activities, only: [:new, :create]
+    resources :activities, only: [:new, :create, :destroy]
   end
 
-  resources :activities, only: [:index]
+  resources :activities, only: [:index, :show]
 
   root to: "home#index"
 

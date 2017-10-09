@@ -1,13 +1,13 @@
 .card.activity-card
   .card-block
-    h4.card-title = "#{event.activities.first.title}: #{event.happening_at.strftime("%B %e, %Y")}"
+    h4.card-title = "#{event.activities.first.title}: #{formatted_date(event.happening_at)}"
     .text-center = fa_icon("caret-up")
     .text-center.display-none = fa_icon("caret-down")
   img.card-img-top.display-none src=event.activities.first.image.url(:medium)
   .card-block.display-none
       p.card-text = event.activities.first.description
       p.card-text = "Location: #{event.location}"
-      p.card-text = "Date: #{event.happening_at}"
+      p.card-text = "When: #{event.happening_at}"
 
       - if event.invitations.any? { |i| i.rsvps.any? }
         h5 You're going with:

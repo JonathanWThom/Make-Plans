@@ -3,14 +3,10 @@ class EventsController < ApplicationController
   end
 
   def create
-    ## TODO: Fix this. Field is text, but needs to be save as datetime.
-    event = Event.create(
-        happening_at: DateTime.strptime(event_params[:happening_at], '%m/%d/%Y %I:%M %p'),
-        location: event_params[:location],
-        user_id: event_params[:user_id]
-      )
+    event = Event.create(event_params)
     if event.valid?
       activity = Activity.find(activity_params[:activity])
+      update_activity(event, activity)
       invitation = Invitation.create(event_id: event.id, activity_id: activity.id, user_email: invitee_email[:invitee_email])
       invitation.users << current_user
       invitation.pending_invitations.create(user_email: invitee_email[:invitee_email])
@@ -25,7 +21,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:happening_at, :location, :user_id)
+    params.require(:event).permit(:happening_at_string, :location, :user_id)
   end
 
   def activity_params
@@ -34,5 +30,11 @@ class EventsController < ApplicationController
 
   def invitee_email
     params.permit(:invitee_email)
+  end
+
+  def update_activity(event, activity)
+    if activity.happening_at_string != event.happening_at_string
+      activity.update(happening_at_string: event.happening_at_string)
+    end
   end
 end

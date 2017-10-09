@@ -1,7 +1,9 @@
 class Activity < ActiveRecord::Base
+  include Convertable
   belongs_to :user
-  has_many :invitations
-  has_many :events, through: :invitations
+  has_many :invitations, dependent: :destroy
+  has_many :events, through: :invitations, dependent: :destroy
+  after_commit :convert_happening_at, on: [:create, :update]
 
   validates :title, :image, :description, presence: true
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
@@ -13,9 +15,7 @@ class Activity < ActiveRecord::Base
     where(public: true)
   }
 
-
   def image_url
     image.url(:medium)
   end
-  
 end

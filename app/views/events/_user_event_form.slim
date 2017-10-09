@@ -6,7 +6,7 @@
       .form-group
         = f.label "What"
         = select_tag :activity,
-          options_for_select(current_user.activities.map { |a| [a.title, a.id]}),
+          options_for_select(activities_select),
           class: "form-control"
 
         = link_to "Create a new activity", new_user_activity_path(current_user)
@@ -14,7 +14,7 @@
         = f.label "When"
 
         .input-group.date#datetimepicker1
-          = f.text_field :happening_at, label: false, class: "form-control"
+          = f.text_field :happening_at_string, label: false, class: "form-control"
           span.input-group-addon
             span.glyphicon.glyphicon-calendar
       .form-group
@@ -29,6 +29,10 @@
         = f.submit
 
 javascript:
-  $(function () {
-      $('#datetimepicker1').datetimepicker();
-  });
+  $(document).ready(function(){
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+    });
+
+    POPULATE.setEventTimeFromActivity.init();
+  })
