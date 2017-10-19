@@ -5,7 +5,7 @@ class Activity < ActiveRecord::Base
   has_many :events, through: :invitations, dependent: :destroy
   after_commit :convert_happening_at, on: [:create, :update]
 
-  validates :title, :image, :description, presence: true
+  validates :title, presence: true
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 

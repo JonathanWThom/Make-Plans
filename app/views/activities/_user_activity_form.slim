@@ -7,17 +7,17 @@
         = f.label "Title"
         = f.input :title,
           label: false,
-          input_html: {class: "form-control", required: true}
+          input_html: { class: "form-control", required: true }
       .form-group
         = f.label "Description"
         = f.input :description,
           label: false,
-          input_html: {class: "form-control", required: true}
+          input_html: { class: "form-control" }
       .form-group
         = f.label "Location"
         = f.input :location,
           label: false,
-          input_html: {class: "form-control", required: true},
+          input_html: {class: "form-control" },
           placeholder: false
 
         .google-logo.margin-top-5.float-right
@@ -47,8 +47,7 @@
         = f.label "Image"
         = f.input :image,
           as: :file,
-          label: false,
-          input_html: {required: true}
+          label: false
 
         .upload-button Upload
 

@@ -1,0 +1,7 @@
+/// TODO: Add error handling here
+<% @activity.errors.keys.each do |key| %>
+  $(".activity_" + "<%= key %>").addClass("error");
+  $(".activity_" + "<%= key %>").find("input").focus(function() {
+    $(".activity_" + "<%= key %>").removeClass("error")
+  })
+<% end %>

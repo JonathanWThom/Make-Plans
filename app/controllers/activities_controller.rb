@@ -7,8 +7,8 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    activity = user.activities.create(activity_params)
-    if activity.valid?
+    @activity = user.activities.create(activity_params)
+    if @activity.valid?
       redirect_to user_path(user)
     else
       respond_to do |format|
