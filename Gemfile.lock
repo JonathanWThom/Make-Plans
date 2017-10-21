@@ -57,7 +57,13 @@ GEM
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
     bcrypt (3.1.11)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
     bindex (0.5.0)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     bootstrap3-datetimepicker-rails (4.14.30)
@@ -85,6 +91,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
+    debug_inspector (0.0.2)
     decent_exposure (3.0.0)
       activesupport (>= 4.0)
     devise (4.2.1)
@@ -277,6 +284,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  better_errors
+  binding_of_caller
   bootstrap-sass (= 3.2.0.2)
   bootstrap3-datetimepicker-rails (~> 4.14.30)
   byebug

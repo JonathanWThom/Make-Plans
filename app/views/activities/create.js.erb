@@ -1,5 +1,8 @@
 <% @activity.errors.keys.each do |key| %>
   var input = $(".activity_" + "<%= key %>");
+  if ("<%= key %>" === "happening_at_string") {
+    input = $(".date");
+  }
   input.addClass("error");
   input.find("input").focus(function() {
     input.removeClass("error")
@@ -7,3 +10,4 @@
 <% end %>
 
 // errors for bad locations
+// errors for bad dates
