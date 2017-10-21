@@ -6,27 +6,27 @@ describe Activity do
   it { should validate_presence_of :location }
   it { should validate_presence_of :title }
 
-  context "callbacks" do
-    it "will call \'convert_happening_at\' after create" do
-      activity = create("activity")
-      expect(activity).to receive(:convert_happening_at)
-    end
+  it "will convert happening_at_string after create" do
+    activity = create(:activity)
+    expect(activity.happening_at).to be_a Time
   end
 
-  # after_commit :convert_happening_at, on: [:create, :update]
-  #
-  # validates :description, :location, :title, presence: true
-  # has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
-  # validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
-  # validates_with DateValidator
-  #
-  # scope :nearby, -> (latitude, longitude) {
-  #   where("latitude >= ? AND latitude <= ?", latitude - 2, latitude + 2).
-  #   where("longitude >= ? AND longitude <= ?", longitude - 2, longitude + 2).
-  #   where(public: true)
-  # }
-  #
-  # def image_url
-  #   image.url(:medium)
-  # end
+  it "will convert happening_at_string after update" do
+    activity = create(:activity, happening_at_string: nil)
+    activity.update(happening_at_string: "10/21/2017 3:10 PM")
+    expect(activity.happening_at).to be_a Time
+  end
+
+  it { should have_attached_file(:image) }
+  it { should validate_attachment_content_type(:image).allowing('image/*') }
+
+  describe ".nearby" do
+    it "should return all public activities within 2 degrees lat and long" do
+      activity = create(:activity)
+      nearby_but_not_public = create(:activity, public: false, latitude: 48, longitude: 122)
+      public_but_not_nearby = create(:activity, public: true, latitude: 40, longitude: 122)
+      nearby_and_public = create(:activity, public: true, latitude: 48, longitude: 122)
+      expect(Activity.nearby(50, 124)).to eq([nearby_and_public])
+    end
+  end
 end
