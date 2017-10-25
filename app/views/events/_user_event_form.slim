@@ -14,15 +14,19 @@
         = f.label "When"
 
         .input-group.date#datetimepicker1
-          = f.text_field :happening_at_string, label: false, class: "form-control"
+          = f.text_field :happening_at_string,
+            label: false,
+            class: "form-control"
+
           span.input-group-addon
             span.glyphicon.glyphicon-calendar
       .form-group
-        = f.label "Who"
-        = text_field_tag :invitee_email,
-          nil,
-          class: "form-control",
-          placeholder: "Enter a friend's email address"
+        = f.simple_fields_for :invitation do |i|
+          = f.label "Who"
+          = i.email_field :user_email,
+            label: false,
+            class: "form-control",
+            placeholder: "Enter a friend's email address"
         = f.hidden_field :user_id, value: current_user.id
 
       .text-center

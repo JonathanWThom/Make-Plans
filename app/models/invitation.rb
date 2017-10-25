@@ -5,6 +5,8 @@ class Invitation < ActiveRecord::Base
   has_and_belongs_to_many :users
   before_destroy :destroy_event
 
+  validates :user_email, presence: true
+
   def to_param
     uuid
   end

@@ -20,6 +20,8 @@ class ActivitiesController < ApplicationController
   def index
     if params[:latitude] && params[:longitude]
       @activities = Activity.nearby(params[:latitude].to_f, params[:longitude].to_f)
+
+      ### add some message about no activities in area? 
       if @activities.empty?
         @activities = Activity.all
       end

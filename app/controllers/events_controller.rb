@@ -21,18 +21,20 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:happening_at_string, :location, :user_id)
+    params.require(:event).permit(
+      :happening_at_string,
+      :location,
+      :user_id,
+      invitation_attributes: [:user_email]
+    )
   end
 
   def activity_params
     params.permit(:activity)
   end
 
-  def invitee_email
-    params.permit(:invitee_email)
-  end
-
   def update_activity(event, activity)
+    ## this is broken
     if activity.happening_at_string != event.happening_at_string
       activity.update(happening_at_string: event.happening_at_string)
     end
