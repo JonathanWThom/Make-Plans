@@ -21,12 +21,12 @@
           span.input-group-addon
             span.glyphicon.glyphicon-calendar
       .form-group
-        = f.simple_fields_for :invitation do |i|
-          = f.label "Who"
-          = i.email_field :user_email,
-            label: false,
-            class: "form-control",
-            placeholder: "Enter a friend's email address"
+        = f.label "Who"
+        = f.email_field :invitee_email,
+          label: false,
+          class: "form-control",
+          placeholder: "Enter a friend's email address"
+
         = f.hidden_field :user_id, value: current_user.id
 
       .text-center
