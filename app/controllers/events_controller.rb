@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    event = Event.create(event_params)
+    @event = Event.create(event_params)
     if event.valid?
       activity = Activity.find(activity_params[:activity])
       update_activity(event, activity)
@@ -13,14 +13,17 @@ class EventsController < ApplicationController
       invitation.users << current_user
       invitation.pending_invitations.create(user_email: event_params[:user_email])
       InvitationEmailMailer.invitation_email(current_user, event_params[:user_email], invitation).deliver_later
+      redirect_to root_path
     else
-      flash[:notice] = "Something went wrong, please resubmit"
+      respond_to do |format|
+        format.js { render layout: false }
+      end
     end
-
-    redirect_to user_path(current_user)
   end
 
   private
+
+  attr_reader :event
 
   def event_params
     params.require(:event).permit(

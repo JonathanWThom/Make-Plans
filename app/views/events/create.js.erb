@@ -1,0 +1,9 @@
+alert("<%= @event.errors.full_messages %>")
+
+<% @event.errors.keys.each do |key| %>
+  var input = $("#event_" + "<%= key %>");
+  input.addClass("error");
+  input.find("input").focus(function() {
+    input.removeClass("error")
+  })
+<% end %>

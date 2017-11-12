@@ -2,7 +2,7 @@
   .card-block
     .card-title.text-center
       h4 Invite a Friend to an Activity!
-    = simple_form_for Event.new do |f|
+    = simple_form_for Event.new, remote: true do |f|
       .form-group
         = f.label "What"
         = select_tag :activity,
